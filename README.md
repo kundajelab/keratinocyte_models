@@ -15,3 +15,5 @@ this produces keratinocyte.tasks.tsv
 
 2) run `dbingest.sh` to store the dataset in tiledb format
 This produces the tiledb database "db_keratinocyte"
+
+3) run `bpnet.train.wrapper.sh` to train model on specific taskk/fold
