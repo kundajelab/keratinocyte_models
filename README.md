@@ -1,6 +1,27 @@
 # keratinocyte_models
 assembly-free keratinocyte models
 
+
+## Getting seqdataloader and kerasAC 
+To run the scripts below, you will need the seqdataloader and kerasAC code bases. The pip packages are outdated, so please install from source: 
+```
+#first install the latest tiledb version 
+pip install --upgrade tiledb 
+
+git clone https://github.com/kundajelab/seqdataloader
+cd seqdataloader 
+python setup.py build 
+python setup.py develop 
+```
+
+```
+git clone https://github.com/kundajelab/kerasAC.git 
+cd kerasAC 
+python setup.py build 
+python setup.py develop 
+```
+
+## generating tiledb database and training models 
 1) run `make_task_file.py` to  create tiledb representation of:
 
 * dataset
