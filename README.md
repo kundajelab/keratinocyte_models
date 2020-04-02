@@ -5,7 +5,7 @@ assembly-free keratinocyte models
 ## Getting seqdataloader and kerasAC 
 To run the scripts below, you will need the seqdataloader and kerasAC code bases. The pip packages are outdated, so please install from source: 
 ```
-#first install the latest tiledb version 
+# first install the latest tiledb version 
 pip install --upgrade tiledb 
 
 git clone https://github.com/kundajelab/seqdataloader
