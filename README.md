@@ -1,7 +1,8 @@
 # keratinocyte_models
 assembly-free keratinocyte models
 
-# The tiledb database is stored in: /oak/stanford/groups/akundaje/projects/keratinocyte_models/db_keratinocyte
+### The tiledb database is stored in: 
+`/oak/stanford/groups/akundaje/projects/keratinocyte_models/db_keratinocyte`
 
 ## Getting seqdataloader and kerasAC 
 To run the scripts below, you will need the seqdataloader and kerasAC code bases. The pip packages are outdated, so please install from source: 
