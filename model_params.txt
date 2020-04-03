@@ -1,0 +1,2 @@
+counts_loss_weight	11.2
+profile_loss_weight     1
