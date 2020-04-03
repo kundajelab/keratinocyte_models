@@ -1,6 +1,7 @@
 # keratinocyte_models
 assembly-free keratinocyte models
 
+# The tiledb database is stored in: /oak/stanford/groups/akundaje/projects/keratinocyte_models/db_keratinocyte
 
 ## Getting seqdataloader and kerasAC 
 To run the scripts below, you will need the seqdataloader and kerasAC code bases. The pip packages are outdated, so please install from source: 
@@ -37,4 +38,8 @@ this produces keratinocyte.tasks.tsv
 2) run `dbingest.sh` to store the dataset in tiledb format
 This produces the tiledb database "db_keratinocyte"
 
-3) run `bpnet.train.wrapper.sh` to train model on specific taskk/fold
+3) Identify counts loss weight: 
+`get_loss_weights.sh	`
+This gets stored in "model_params.txt"
+
+4) run `bpnet.train.wrapper.sh` to train model on specific task/fold
