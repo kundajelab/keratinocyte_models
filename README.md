@@ -35,12 +35,19 @@ python setup.py develop
 * count_bigwig_minus_5p
 
 this produces keratinocyte.tasks.tsv
+2) run `get_ambig.sh` to concatenate blacklist regions + 99th quantile read count outliers. This generates ambiguous tracks that should be added as a column in keratinocyte.tasks.tsv 
 
-2) run `dbingest.sh` to store the dataset in tiledb format
+3) run `dbingest.sh` to store the dataset in tiledb format
 This produces the tiledb database "db_keratinocyte"
 
-3) Identify counts loss weight: 
+4) Identify counts loss weight: 
 `get_loss_weights.sh	`
 This gets stored in "model_params.txt"
 
-4) run `bpnet.train.wrapper.sh` to train model on specific task/fold
+5) run `bpnet.train.wrapper*.sh` to train model on specific task/fold
+
+6) run `bpnet.predict.wrapper*.sh` to get predictions from the model on the test set. 
+
+7) visualize the loss and the model performance via jupyter notebooks: 
+`PLOT_LOSS.ipynb`
+`PLOT_PERF.ipynb`
