@@ -1,4 +1,4 @@
-#!/bin/bash
+for profile mo#!/bin/bash
 fold=$1
 task=$2
 bp=$3
@@ -7,7 +7,7 @@ CUDA_VISIBLE_DEVICES=$gpu kerasAC_train \
 		    --batch_size 25 \
 		    --ref_fasta /mnt/data/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta \
 		    --tdb_ambig_attribute ambig_peak \
-		    --tdb_array db_keratinocyte-0h \
+		    --tdb_array /oak/stanford/groups/akundaje/projects/keratinocyte_models/db_keratinocyte-0h \
 		    --tdb_partition_attribute_for_upsample $bp\bp_peak \
 		    --tdb_partition_thresh_for_upsample 1 \
 		    --tdb_input_source_attribute seq \

@@ -7,7 +7,7 @@ gpu=$4
 CUDA_VISIBLE_DEVICES=$gpu kerasAC_predict_tdb \
 		    --batch_size 20 \
 		    --ref_fasta GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta \
-		    --tdb_array db_keratinocyte-0h \
+		    --tdb_array /oak/stanford/groups/akundaje/projects/keratinocyte_models/db_keratinocyte-0h \
 		    --tdb_partition_attribute_for_upsample $bp\bp_peak \
 		    --tdb_partition_thresh_for_upsample 2 \
 		    --tdb_input_source_attribute seq \
