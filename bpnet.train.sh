@@ -1,12 +1,14 @@
 #!/bin/bash
 fold=$1
 task=$2
-
-CUDA_VISIBLE_DEVICES=3 kerasAC_train \
-		    --batch_size 20 \
+bp=$3
+gpu=$4
+CUDA_VISIBLE_DEVICES=$gpu kerasAC_train \
+		    --batch_size 25 \
 		    --ref_fasta /mnt/data/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta \
-		    --tdb_array /oak/stanford/groups/akundaje/projects/keratinocyte_models/db_keratinocyte \
-		    --tdb_partition_attribute_for_upsample 100bp_peak \
+		    --tdb_ambig_attribute ambig_peak \
+		    --tdb_array db_keratinocyte-0h \
+		    --tdb_partition_attribute_for_upsample $bp\bp_peak \
 		    --tdb_partition_thresh_for_upsample 1 \
 		    --tdb_input_source_attribute seq \
 		    --tdb_input_aggregation None \
@@ -28,7 +30,7 @@ CUDA_VISIBLE_DEVICES=3 kerasAC_train \
 		    --max_queue_size 20 \
 		    --patience 3 \
 		    --patience_lr 2 \
-		    --model_prefix $task.100bp_peak.profile.peaks.only.bpnet.$fold \
+		    --model_prefix $task.$bp\bp_peak.profile.peaks.only.bpnet.$fold \
 		    --architecture_spec profile_bpnet_dnase \
 		    --use_multiprocessing False \
 		    --tasks $task \
