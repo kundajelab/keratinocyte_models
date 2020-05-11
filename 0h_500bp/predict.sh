@@ -1,14 +1,38 @@
 #!/bin/bash
+
+#fold to use for training 
 fold=$1
-task=$2
-bp=$3
-gpu=$4
+
+#gpu to use for training 
+gpu=$2
+
+#get model name
+model_name=$3
+
+#set seed for training
+if [ -z "$4" ]
+then
+    seed=1234
+else
+    seed=$4
+fi
+echo "seed:$seed"
+
+#output directory 
+if [ -z "$5" ]
+then
+    outdir='.'
+else
+    outdir=$5
+fi
+echo "outdir:$outdir"
+
 
 CUDA_VISIBLE_DEVICES=$gpu kerasAC_predict_tdb \
 		    --batch_size 20 \
-		    --ref_fasta GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta \
-		    --tdb_array /oak/stanford/groups/akundaje/projects/keratinocyte_models/db_keratinocyte-0h \
-		    --tdb_partition_attribute_for_upsample $bp\bp_peak \
+		    --ref_fasta /mnt/data/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta \
+		    --tdb_array /oak/stanford/groups/akundaje/projects/keratinocyte_models/db_keratinocyte \
+		    --tdb_partition_attribute_for_upsample 500bp_peak \
 		    --tdb_partition_thresh_for_upsample 2 \
 		    --tdb_input_source_attribute seq \
 		    --tdb_input_aggregation None \
@@ -25,8 +49,8 @@ CUDA_VISIBLE_DEVICES=$gpu kerasAC_predict_tdb \
 		    --fold $fold \
 		    --genome hg38 \
 		    --upsample_ratio_list_predict 1 \
-		    --predictions_and_labels_hdf5 predictions.$task.$bp\bp_peak.$fold \
-		    --load_model_hdf5 $task.$bp\bp_peak.profile.peaks.only.bpnet.$fold.hdf5 \
-		    --tasks $task \
+		    --predictions_and_labels_hdf5 $outdir/$model_name.$fold \
+		    --load_model_hdf5 $outdir/$model_name.$fold.hdf5 \
+		    --tasks  keratinocytes-0h \
 		    --upsample_threads 1 \
 		    --tdb_transformation_pseudocount 1

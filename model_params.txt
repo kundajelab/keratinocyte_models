@@ -1,2 +1,3 @@
 counts_loss_weight	30
 profile_loss_weight	1
+filters	500

@@ -1,0 +1,12 @@
+*.txt
+*.arch
+*.hdf5
+*.log
+*.weights
+*.0
+*.1
+*.png
+*.batch
+*.bed
+*.fasta
+*.fai
